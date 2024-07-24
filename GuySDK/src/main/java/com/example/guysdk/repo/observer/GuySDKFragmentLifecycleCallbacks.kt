@@ -13,7 +13,16 @@ internal class GuySDKFragmentLifecycleCallbacks : FragmentManager.FragmentLifecy
     override fun onFragmentCreated(fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?) {
         super.onFragmentCreated(fm, f, savedInstanceState)
         Log.d(TAG, "onFragmentCreated: GuySDK")
-        setupButtonListeners(f.view)
+    }
+
+    override fun onFragmentViewCreated(
+        fm: FragmentManager,
+        f: Fragment,
+        v: View,
+        savedInstanceState: Bundle?
+    ) {
+        super.onFragmentViewCreated(fm, f, v, savedInstanceState)
+        setupButtonListeners(v)
 
     }
 
