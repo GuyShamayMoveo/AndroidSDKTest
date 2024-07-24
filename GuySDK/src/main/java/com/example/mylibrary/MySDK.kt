@@ -1,4 +1,4 @@
-package com.example.mylibrary
+package com.example.guysdk
 
 import android.util.Log
 
