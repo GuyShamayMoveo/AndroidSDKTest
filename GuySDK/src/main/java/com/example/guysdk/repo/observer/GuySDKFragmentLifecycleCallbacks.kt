@@ -2,6 +2,7 @@ package com.example.guysdk.repo.observer
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -33,11 +34,14 @@ internal class GuySDKFragmentLifecycleCallbacks : FragmentManager.FragmentLifecy
                     setupButtonListeners(it.getChildAt(i))
                 }
             } else if (it is Button) {
-                it.setOnClickListener { button ->
-                    Log.d(
-                        TAG,
-                        "setupButtonListeners: GuySDK, button clicked: ${(button as? Button)?.text}"
-                    )
+                it.setOnTouchListener { v, event ->
+                    if (event.action == MotionEvent.ACTION_UP) {
+                        Log.d(
+                            TAG,
+                            "setupButtonListeners: GuySDK, button clicked: ${(v as? Button)?.text}"
+                        )
+                    }
+                    true
                 }
             }
         }
